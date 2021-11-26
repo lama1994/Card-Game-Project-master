@@ -73,7 +73,9 @@ function pushCard(card){
 }
 
 function checkMatch(){
-    if(openCards[0].appendChild.classList)
+    if(openCards[0].appendChild.classList){
+        
+    }
 }
 
 function addMove(){
