@@ -65,7 +65,7 @@ function validClick(click){
 }
 
 function toggleCard(card){
-    card.classList.toggle("open").
+    card.classList.toggle("open");
 }
 
 function pushCard(card){
