@@ -65,7 +65,7 @@ function validClick(click){
 }
 
 function toggleCard(card){
-    card.classList.toggle("open");
+    card.classList.toggle("open").
 }
 
 function pushCard(card){
@@ -73,13 +73,13 @@ function pushCard(card){
 }
 
 function checkMatch(){
-    if(openCards[0].appendChild.classList){
-        
+    if(openCards[0].children[0].className == openCards[1].children[0].className){
+        card.classList.push("open");
     }
 }
 
 function addMove(){
-    openCards.push(card);
+     movesCounter++;
 }
 
 function removeStars(){
@@ -101,7 +101,7 @@ deck.addEventListener('click', function(event){
         checkMatch();
         addMove();
         if(movesCounter == 16 || movesCounter == 24){
-            removeStars();
+           // removeStars();
         }
     }
     }
