@@ -76,9 +76,12 @@ function checkMatch(){
     if(openCards[0].children[0].className == openCards[1].children[0].className){
         openCards[0].classList.toggle("match");
         openCards[1].classList.toggle("match");
+        openCards = []
     }else{
-        openCards[0].classList.delete("open");
-        openCards[1].classList.delete("open");
+        setTimeout(()=> {
+            openCards[0].classList.toggle("open");
+            openCards[1].classList.toggle("open");
+        }, 1000);
     }
 }
 
