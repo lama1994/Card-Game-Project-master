@@ -74,7 +74,11 @@ function pushCard(card){
 
 function checkMatch(){
     if(openCards[0].children[0].className == openCards[1].children[0].className){
-        card.classList.push("open");
+        openCards[0].classList.toggle("match");
+        openCards[1].classList.toggle("match");
+    }else{
+        openCards[0].classList.delete("open");
+        openCards[1].classList.delete("open");
     }
 }
 
@@ -111,5 +115,6 @@ restart.addEventListener('click', function(event){
     stopClock();
     timeOut = true ;
     time = 0;
+    openCards = [];
     timerCount();
   })
