@@ -17,6 +17,7 @@ const moves = document.querySelector("#moves");
 const timer = document.querySelector("#timer");
 const restart = document.querySelector("#restart");
 const cardToShuffle = document.querySelectorAll("#deck li");
+const heart = document.querySelectorAll("#bi bi-heart-fill");
 
 // varible
 let time = 0;
@@ -81,16 +82,19 @@ function checkMatch(){
         setTimeout(()=> {
             openCards[0].classList.toggle("open");
             openCards[1].classList.toggle("open");
-        }, 1000);
+            openCards = []
+        }, 500);
+        
     }
 }
 
 function addMove(){
      movesCounter++;
+     moves.innerHTML = movesCounter;
 }
 
 function removeStars(){
-    openCards.push(card);
+    heart.classList.toggle("bi-heart-fill");
 }
 
 // event listeners
@@ -107,8 +111,8 @@ deck.addEventListener('click', function(event){
     if(openCards.length == 2){
         checkMatch();
         addMove();
-        if(movesCounter == 16 || movesCounter == 24){
-           // removeStars();
+        if(movesCounter == 4 || movesCounter == 24){
+           removeStars();
         }
     }
     }
@@ -118,6 +122,10 @@ restart.addEventListener('click', function(event){
     stopClock();
     timeOut = true ;
     time = 0;
-    openCards = [];
     timerCount();
-  })
+    movesCounter = 0;
+     moves.innerHTML = movesCounter;
+    deck.classList.toggle("open");
+    deck.classList.toggle("match");
+    openCards = [];
+  });
