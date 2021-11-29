@@ -17,7 +17,7 @@ const moves = document.querySelector("#moves");
 const timer = document.querySelector("#timer");
 const restart = document.querySelector("#restart");
 const cardToShuffle = document.querySelectorAll("#deck li");
-const heart = document.querySelectorAll("#bi bi-heart-fill");
+const heart = document.querySelectorAll("#heart li");
 
 // varible
 let time = 0;
@@ -78,6 +78,12 @@ function checkMatch(){
         openCards[0].classList.toggle("match");
         openCards[1].classList.toggle("match");
         openCards = []
+        match++;
+        if (match == 8){
+            setTimeout(()=>{
+                alert("Win");
+            }, 500)
+        }
     }else{
         setTimeout(()=> {
             openCards[0].classList.toggle("open");
@@ -94,7 +100,24 @@ function addMove(){
 }
 
 function removeStars(){
-    heart.classList.toggle("bi-heart-fill");
+   // heart.classList.toggle("bi-heart-fill");
+   if(movesCounter == 8){
+       heart[0].getElementsByClassName.display = "none"
+   }
+   if(movesCounter == 16){
+    heart[1].getElementsByClassName.display = "none"
+}
+if(movesCounter == 24){
+    heart[2].getElementsByClassName.display = "none"
+}
+}
+
+function resetStars(){
+    for(let star of heart ){
+        if(star.style.display == "none"){
+            star.style.display = "inline"
+        }
+    }
 }
 
 // event listeners
@@ -111,9 +134,13 @@ deck.addEventListener('click', function(event){
     if(openCards.length == 2){
         checkMatch();
         addMove();
-        if(movesCounter == 4 || movesCounter == 24){
-           removeStars();
-        }
+       // if(movesCounter == 8 || movesCounter == 24){
+        //   removeStars();
+       // }
+        if(movesCounter >= 8 && match < 8){
+            removeStars();
+         }
+
     }
     }
   })
@@ -124,8 +151,12 @@ restart.addEventListener('click', function(event){
     time = 0;
     timerCount();
     movesCounter = 0;
-     moves.innerHTML = movesCounter;
-    deck.classList.toggle("open");
-    deck.classList.toggle("match");
+    moves.innerHTML = movesCounter;
+    //deck.classList.toggle("open");
+    //deck.classList.toggle("match");
+    for(const card of arr  ){
+        card.classList.remove("open","match");
+    }
+    resetStars();
     openCards = [];
   });
